@@ -6,7 +6,7 @@ body{
   font-family: 'Times New Roman', Times, serif;
 }
 
-/* @media (max-width: 500px) {
+@media (max-width: 500px) {
   #navbarNav {
       display: none;
     }
@@ -23,4 +23,4 @@ body{
   label[for="nav_bar_icon"] {
       display: none;
   }
-} */
+}
