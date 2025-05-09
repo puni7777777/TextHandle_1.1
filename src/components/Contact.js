@@ -7,6 +7,8 @@ export default function ContactUs() {
     const [user, setUser] = useState('');
     const [mail, setMail] = useState('');
     const [userMsg, setUserMsg] = useState('');
+    const [bgcolor, setBgcolor] = useState('bg-[#9F51F6]');
+    const [hoverbgcolor, setHoverbgcolor] = useState('bg-[#ad6ef5]');
 
     const userChange = event => { setUser(event.target.value); };  //if one event handler then all the inputs follow the same message
     const mailChange = event => { setMail(event.target.value); };
@@ -33,8 +35,10 @@ export default function ContactUs() {
                     setUser('');
                     setMail('');
                     setUserMsg('');
+                    setBgcolor('bg-[#51f654]')
+                    setHoverbgcolor('bg-[#7af67c]')
                 }, (error) => {
-                    setSent(error.text);
+                    setSent("error sending");
                 });
         }
     };
@@ -88,7 +92,7 @@ export default function ContactUs() {
                     <input
                         type="submit"
                         value={sent}
-                        className='btn btn-primary w-32 bg-[#9F51F6] rounded-full p-2 hover:bg-[#ad6ef5] cursor-pointer'
+                        className={`btn btn-primary w-32 ${bgcolor} rounded-full p-2 hover:${hoverbgcolor} cursor-pointer`}
                         id='button'
                         disabled={!disabling}
                     />
