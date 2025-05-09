@@ -40,47 +40,60 @@ export default function ContactUs() {
     };
 
     return (
-        <div className='vh-100 flex-row justify-center text-white'>
-            <div className='flex justify-center p-4 text-lg text-[#9F51F6]'>
+        <div className='flex flex-col justify-center items-center text-white pt-20'>
+            <div className='text-lg text-[#9F51F6] mb-6'>
                 <h1>Contact Me</h1>
             </div>
 
-            {/* <form action="?" method="POST">
-                <div className="g-recaptcha" data-sitekey="your_site_key"></div>
-                <br />
-                <input type="submit" value="Submit" />
-            </form> */}
-
-            <div className='flex justify-center'>
-                <form id="form" className='flex-col'>
-                    <div className='flex gap-5'>
-                        <div className="flex justify-start gap-7 py-4">
-                            <label htmlFor="from_name">Name*</label>
-                            <input type="text" name="from_name" id="from_name" className='form-control border-none bg-[#e3c9ff] p-2 rounded-lg outline-none caret-[#9F51F6] text-[#9F51F6]' onChange={userChange}
-                                value={user} required />
-                        </div>
-                        <div className="flex justify-start gap-6 py-4">
-                            <label htmlFor="reply_to">E-mail*</label>
-                            <input type="text" name="reply_to" id="reply_to" className='form-control border-none bg-[#e3c9ff] p-2 rounded-lg outline-none caret-[#9F51F6] text-[#9F51F6]' onChange={mailChange}
-                                value={mail} required />
-                        </div>
+            <form id="form" className='w-full max-w-4xl flex flex-col gap-6' onSubmit={sendEmail}>
+                <div className='flex flex-col md:flex-row md:gap-6'>
+                    <div className="flex flex-col flex-1">
+                        <label htmlFor="from_name" className="mb-2">Name*</label>
+                        <input
+                            type="text"
+                            name="from_name"
+                            id="from_name"
+                            className='form-control border-none bg-[#e3c9ff] p-2 rounded-lg outline-none caret-[#9F51F6] text-[#9F51F6] w-full'
+                            onChange={userChange}
+                            value={user}
+                            required
+                        />
                     </div>
-                    <div>
-                        <div className="py-4">
-                            <div className='pb-2'>
-                                <label htmlFor="message">Message*</label>
-                            </div>
-                            <div>
-                                <textarea rows="4" cols="69" name="message" id="message" className='form-control border-none bg-[#e3c9ff] p-2 rounded-lg outline-none caret-[#9F51F6] text-[#9F51F6]' onChange={msgChange}
-                                    value={userMsg} required ></textarea>
-                            </div>
-                        </div>
-                        <div className='flex justify-center align-center mw-100 py-4' >
-                            <input type="submit" value={sent} className='btn btn-primary w-32 bg-[#9F51F6] rounded-full p-2 hover:bg-[#ad6ef5]' id='button' onClick={sendEmail} disabled={!disabling} />
-                        </div>
+                    <div className="flex flex-col flex-1 mt-4 md:mt-0">
+                        <label htmlFor="reply_to" className="mb-2">E-mail*</label>
+                        <input
+                            type="text"
+                            name="reply_to"
+                            id="reply_to"
+                            className='form-control border-none bg-[#e3c9ff] p-2 rounded-lg outline-none caret-[#9F51F6] text-[#9F51F6] w-full'
+                            onChange={mailChange}
+                            value={mail}
+                            required
+                        />
                     </div>
-                </form>
-            </div>
-        </div >
+                </div>
+                <div className="flex flex-col">
+                    <label htmlFor="message" className="mb-2">Message*</label>
+                    <textarea
+                        rows="4"
+                        name="message"
+                        id="message"
+                        className='form-control border-none bg-[#e3c9ff] p-2 rounded-lg outline-none caret-[#9F51F6] text-[#9F51F6] w-full resize-none'
+                        onChange={msgChange}
+                        value={userMsg}
+                        required
+                    ></textarea>
+                </div>
+                <div className='flex justify-center'>
+                    <input
+                        type="submit"
+                        value={sent}
+                        className='btn btn-primary w-32 bg-[#9F51F6] rounded-full p-2 hover:bg-[#ad6ef5] cursor-pointer'
+                        id='button'
+                        disabled={!disabling}
+                    />
+                </div>
+            </form>
+        </div>
     );
 };
