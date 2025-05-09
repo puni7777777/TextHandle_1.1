@@ -40,9 +40,9 @@ export default function ContactUs() {
     };
 
     return (
-        <div className='vh-100 d-flex justify-content-center flex-column'>
-            <div className='d-flex justify-content-center p-4'>
-                <h3>Contact Me</h3>
+        <div className='vh-100 flex-row justify-center text-white'>
+            <div className='flex justify-center p-4 text-lg text-[#9F51F6]'>
+                <h1>Contact Me</h1>
             </div>
 
             {/* <form action="?" method="POST">
@@ -51,26 +51,32 @@ export default function ContactUs() {
                 <input type="submit" value="Submit" />
             </form> */}
 
-            <div className='d-flex justify-content-center'>
-                <form id="form" className='mw-50'>
-                    <div className='row px-5 gap-3'>
-                        <div className="d-flex justify-content-start gap-3 flex-wrap">
+            <div className='flex justify-center'>
+                <form id="form" className='flex-col'>
+                    <div className='flex gap-5'>
+                        <div className="flex justify-start gap-7 py-4">
                             <label htmlFor="from_name">Name*</label>
-                            <input type="text" name="from_name" id="from_name" className='form-control' onChange={userChange}
+                            <input type="text" name="from_name" id="from_name" className='form-control border-none bg-[#e3c9ff] p-2 rounded-lg outline-none caret-[#9F51F6] text-[#9F51F6]' onChange={userChange}
                                 value={user} required />
                         </div>
-                        <div className="d-flex justify-content-start gap-3 flex-wrap">
+                        <div className="flex justify-start gap-6 py-4">
                             <label htmlFor="reply_to">E-mail*</label>
-                            <input type="text" name="reply_to" id="reply_to" className='form-control' onChange={mailChange}
+                            <input type="text" name="reply_to" id="reply_to" className='form-control border-none bg-[#e3c9ff] p-2 rounded-lg outline-none caret-[#9F51F6] text-[#9F51F6]' onChange={mailChange}
                                 value={mail} required />
                         </div>
-                        <div className="d-flex justify-content-start gap-3 flex-wrap">
-                            <label htmlFor="message">Message*</label>
-                            <input type="text" name="message" id="message" className='form-control' onChange={msgChange}
-                                value={userMsg} required />
+                    </div>
+                    <div>
+                        <div className="py-4">
+                            <div className='pb-2'>
+                                <label htmlFor="message">Message*</label>
+                            </div>
+                            <div>
+                                <textarea rows="4" cols="69" name="message" id="message" className='form-control border-none bg-[#e3c9ff] p-2 rounded-lg outline-none caret-[#9F51F6] text-[#9F51F6]' onChange={msgChange}
+                                    value={userMsg} required ></textarea>
+                            </div>
                         </div>
-                        <div className='d-flex justify-content-center align-center mw-100' >
-                            <input type="submit" value={sent} className='btn btn-primary w-25' id='button' onClick={sendEmail} disabled={!disabling} />
+                        <div className='flex justify-center align-center mw-100 py-4' >
+                            <input type="submit" value={sent} className='btn btn-primary w-32 bg-[#9F51F6] rounded-full p-2 hover:bg-[#ad6ef5]' id='button' onClick={sendEmail} disabled={!disabling} />
                         </div>
                     </div>
                 </form>

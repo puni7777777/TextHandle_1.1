@@ -37,6 +37,9 @@ export default function Navbar(props) {
                             <li className="nav-item">
                                 <Link to='/contact' className={`nav-link ${location.pathname === '/contact' ? 'text-white' : ''}`}>CONTACT</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link to='/login' className={`nav-link ${location.pathname === '/login' ? 'text-white' : ''}`}>LOGIN</Link>
+                            </li>
                             {/* <li className="nav-item">
                             <Search />
                         </li> */}

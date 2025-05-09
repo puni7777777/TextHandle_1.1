@@ -5,7 +5,7 @@ function About() {
     return (
         <>
             <div className='flex flex-col justify-center items-center my-8'>
-                <div className='w-1/2 flex flex-col'>
+                <div className='w-1/2 flex flex-col text-xl'>
                     <p align='justify'>This is a text manipulation tool.
                         Welcome to <i>TEXTHANDLE</i>, where words come to life with a
                         touch of transformation! Our innovative text handling website is
