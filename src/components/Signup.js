@@ -1,6 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { auth } from '../index'; // Adjust the path if needed
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 function Signup() {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
+
+    const handleSignup = async (e) => {
+        e.preventDefault();
+        setError(null); // Clear previous errors
+
+        try {
+          await createUserWithEmailAndPassword(auth, email, password);
+          // User signed up successfully
+          console.log('User signed up!');
+          // You can redirect the user to another page here
+        } catch (error) {
+          setError(error.message);
+          console.error('Error signing up:', error.message);
+        }
+    };
+
     return (
         <div className="py-8 flex flex-col gap-4 w-2/4 h-full items-center rounded-lg">
             <h2 className="text-lg font-bold">Create Account</h2>
@@ -42,16 +64,19 @@ function Signup() {
                 </a>
             </div>
             <div className="text-sm text-white"><h5>or use your email for registration</h5></div>
-            <div className="flex flex-col gap-4">
-                <input type="name" placeholder="Name" className="border-none bg-[#e3c9ff] p-2 rounded-lg outline-none caret-[#9F51F6] text-[#9F51F6]" />
-                <input type="email" placeholder="Email" className="border-none bg-[#e3c9ff] p-2 rounded-lg outline-none caret-[#9F51F6] text-[#9F51F6]" />
-                <input type="password" placeholder="Password" className="border-none bg-[#e3c9ff] p-2 rounded-lg outline-none caret-[#9F51F6] text-[#9F51F6]" />
-            </div>
-            <div className="flex justify-center text-white font-bold">
-                <button className="w-32 bg-[#9F51F6] rounded-full p-2 hover:bg-[#ad6ef5]">
-                    SIGNUP
-                </button>
-            </div>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <form onSubmit={handleSignup}>
+                <div className="flex flex-col gap-4">
+                    <input type="name" placeholder="Name" className="border-none bg-[#e3c9ff] p-2 rounded-lg outline-none caret-[#9F51F6] text-[#9F51F6]" value={name} onChange={(e) => setName(e.target.value)} />
+                    <input type="email" placeholder="Email" className="border-none bg-[#e3c9ff] p-2 rounded-lg outline-none caret-[#9F51F6] text-[#9F51F6]" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input type="password" placeholder="Password" className="border-none bg-[#e3c9ff] p-2 rounded-lg outline-none caret-[#9F51F6] text-[#9F51F6]" value={password} onChange={(e) => setPassword(e.target.value)} />
+                </div>
+                <div className="flex justify-center text-white font-bold pt-3">
+                    <button type="submit" className="w-32 bg-[#9F51F6] rounded-full p-2 hover:bg-[#ad6ef5]">
+                        SIGNUP
+                    </button>
+                </div>
+            </form>
         </div>
     )
 }
